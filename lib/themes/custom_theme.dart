@@ -31,7 +31,7 @@ ThemeData lightTheme = ThemeData(
   ),
   textTheme: TextTheme(
     //can change whatever text thingy we want to use
-    titleLarge: TextStyle(color: COLOR_TEXT)
+    titleLarge: TextStyle(color: COLOR_TEXT),
   ),
   inputDecorationTheme: InputDecorationTheme(
     border: OutlineInputBorder(

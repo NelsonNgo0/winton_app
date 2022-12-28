@@ -1,10 +1,14 @@
-import 'dart:html';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class LoginWidgetPage extends StatefulWidget {
+  const LoginWidgetPage({super.key});
+
+  @override
+  State<LoginWidgetPage> createState() => LoginPage();
+}
+
+class LoginPage extends State<LoginWidgetPage> {
 
   @override
   Widget build(BuildContext context) {

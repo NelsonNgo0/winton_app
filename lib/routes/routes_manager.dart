@@ -4,6 +4,7 @@ import '../screens/login.dart';
 import '../main.dart';
 
 var customRoutes = <String, WidgetBuilder>{
-  '/': (context) => LandingPage(),
-  '/Login': (context) => LoginPage(),
+  '/': (context) => LandingWidgetPage(),
+  '/Login': (context) => LoginWidgetPage(),
+   '/Landing':(context) => LandingWidgetPage(),
 };
