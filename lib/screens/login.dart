@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:winton/themes/custom_theme.dart';
 import 'package:winton/widgets/helper_widgets.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginWidgetPage extends StatefulWidget {
   const LoginWidgetPage({super.key});
@@ -10,8 +11,25 @@ class LoginWidgetPage extends StatefulWidget {
 }
 
 class LoginPage extends State<LoginWidgetPage> {
-  //TextEditingController usernameController = TextEditingController();
-  //TextEditingController passwordController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+
+  //Login Button function
+  Future log_In() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(email: 
+    usernameController.text.trim(), 
+    password: passwordController.text.trim(), 
+    );
+  }
+
+  // Dispose when not in use 
+  @override
+  void dispose(){
+    usernameController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +61,7 @@ class LoginPage extends State<LoginWidgetPage> {
 
           Container(
             child: TextField(
+              obscureText: true,
               decoration: InputDecoration(
                 labelText: 'Password',
               ),
@@ -57,7 +76,12 @@ class LoginPage extends State<LoginWidgetPage> {
             child: ElevatedButton(
               child: const Text('Login'),
               onPressed: () {
-                Navigator.pushNamed(context, '/User');
+                if(log_In() == true){
+                  Navigator.pushNamed(context, '/User');
+                }
+                else{
+                  showDialog(context: context, builder: ((context) => AlertDialog(title: Text('Incorrect Email Or Password'),)));
+                }
               },
             )
           )
