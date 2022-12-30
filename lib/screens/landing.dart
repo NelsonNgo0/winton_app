@@ -1,5 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:winton/themes/custom_theme.dart';
+import 'package:winton/widgets/helper_widgets.dart';
 
 class LandingWidgetPage extends StatefulWidget {
   const LandingWidgetPage({super.key});
@@ -12,15 +13,49 @@ class LandingPage extends State<LandingWidgetPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: ElevatedButton(
-          child: const Text('Login'),
-          onPressed: () {
-            Navigator.pushNamed(context, '/Login');
-          },
+    return Column(
+      
+      children: <Widget>[
+        
+        Padding(
+          
+          padding: const EdgeInsets.fromLTRB(10, 100, 10, 10),
+
+          child: Center(
+            child: Container(
+              
+              width: 300,
+              height: 300,
+              child: Icon(Icons.add_location_rounded, size: 100, color: COLOR_PRIMARY),
+            ),
+          )
         ),
-      ),
+
+        Vertical_Spacer(100),
+
+        Padding(
+          padding: const EdgeInsets.all(10),
+
+          child: Row(
+            children: <Widget>[
+              ElevatedButton(
+                child: const Text('Login'),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/Login');
+                },
+              ),
+
+              ElevatedButton(
+                child: const Text('Sign Up'),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/Rego');
+                },
+              )
+            ],
+            mainAxisAlignment: MainAxisAlignment.center
+          ),
+        )
+      ],
     );
   }
 }
@@ -71,23 +106,23 @@ class LandingPage extends State<LandingWidgetPage> {
 //                   },
 //                 )
 //             ),
-//             Row(
-//               children: <Widget>[
-//                 const Text('Have an account already?'),
-//                 TextButton(
-//                   child: const Text(
-//                     'Sign in',
-//                     style: TextStyle(fontSize: 13),
-//                   ),
-//                   onPressed: () {
-//                     //signup screen
-//                   },
-//                 )
-//               ],
-//               mainAxisAlignment: MainAxisAlignment.center,
-//             ),
-//           ],
-//         ));
+        //     Row(
+        //       children: <Widget>[
+        //         const Text('Have an account already?'),
+        //         TextButton(
+        //           child: const Text(
+        //             'Sign in',
+        //             style: TextStyle(fontSize: 13),
+        //           ),
+        //           onPressed: () {
+        //             //signup screen
+        //           },
+        //         )
+        //       ],
+        //       mainAxisAlignment: MainAxisAlignment.center,
+        //     ),
+        //   ],
+        // ));
 //   }
 // }
 

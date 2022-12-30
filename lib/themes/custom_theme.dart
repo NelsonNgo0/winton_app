@@ -39,7 +39,10 @@ ThemeData lightTheme = ThemeData(
     ),
     filled: true,
     fillColor: Colors.grey.withOpacity(0.1) //will change color later
-  )
+  ),
+  scaffoldBackgroundColor: COLOR_BACKGROUND,
+  cardColor: COLOR_BACKGROUND,
+  canvasColor: COLOR_BACKGROUND,
 
 );
 
