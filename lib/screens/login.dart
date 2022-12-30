@@ -51,8 +51,9 @@ class LoginPage extends State<LoginWidgetPage> {
 
           Container(
             child: TextField(
+              controller: usernameController,
               decoration: InputDecoration(
-                labelText: 'Username',
+                labelText: 'Email',
               ),
             ),
           ),
@@ -61,6 +62,7 @@ class LoginPage extends State<LoginWidgetPage> {
 
           Container(
             child: TextField(
+              controller: passwordController,
               obscureText: true,
               decoration: InputDecoration(
                 labelText: 'Password',
@@ -78,9 +80,6 @@ class LoginPage extends State<LoginWidgetPage> {
               onPressed: () {
                 if(log_In() == true){
                   Navigator.pushNamed(context, '/User');
-                }
-                else{
-                  showDialog(context: context, builder: ((context) => AlertDialog(title: Text('Incorrect Email Or Password'),)));
                 }
               },
             )

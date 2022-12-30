@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "154336934364",
+    "project_id": "wintonmapapp",
+    "storage_bucket": "wintonmapapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:154336934364:android:7623f5fbcbde28c74b7719",
+        "android_client_info": {
+          "package_name": "com.example.winton"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "154336934364-6fchqnep1d2a6bksetirjmhte086jn9j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhGmYOX5J-zb0CDt_xBCRg3ZYC7Tdjy2c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "154336934364-6fchqnep1d2a6bksetirjmhte086jn9j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
