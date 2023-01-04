@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:winton/themes/custom_theme.dart';
 import 'package:winton/widgets/helper_widgets.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class RegoWidgetPage extends StatefulWidget {
   const RegoWidgetPage({super.key});
@@ -57,12 +58,15 @@ class RegoPage extends State<RegoWidgetPage> {
 
   //system check for password confirmation
   bool passwordConfirmed() {
-    if (_passwordController.text.trim() == passwordconfirmController.text.trim()) {
+    if (_passwordController.text.trim() == passwordconfirmController.text.trim() && _passwordController.text.trim().length > 6) {
       return true;
     } else {
+      Fluttertoast.showToast(msg: 'Password length must be atleast 6 characters');
       return false;
     }
   }
+
+
 
   Widget build(BuildContext context) {
     return Scaffold(
