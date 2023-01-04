@@ -34,10 +34,43 @@ class RegoPage extends State<RegoWidgetPage> {
   //user authentication/creation
   Future signUp() async {
     if (passwordConfirmed()) {
+      try{
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: emailController.text.trim(),
           password: _passwordController.text.trim(),
         );
+      } on FirebaseAuthException catch (e){
+        if(e.code == 'email-already-in-use'){
+          showDialog(context: context, builder: (context) => AlertDialog(
+            titleTextStyle: GoogleFonts.bebasNeue(
+                  fontSize: 30,
+                  color: COLOR_PRIMARY
+                  ),
+            backgroundColor: COLOR_BACKGROUND,
+            title: Text('Email already in use'),
+            contentTextStyle: GoogleFonts.bebasNeue(
+                  fontSize: 20,
+                  color: COLOR_TEXT
+                  ),
+            content: Text('Inputted email is already in use. Please attempt to login or reset your password.',style: TextStyle(color: COLOR_TEXT),)
+            ),
+            );
+            return false;
+        }
+        if(e.code == 'invalid-email'){
+            showDialog(context: context, builder: (context) => AlertDialog(
+            titleTextStyle: GoogleFonts.bebasNeue(
+                  fontSize: 30,
+                  color: COLOR_PRIMARY
+                  ),
+            backgroundColor: COLOR_BACKGROUND,
+            title: Text('Invalid Email'),
+            content: Text('Inputted email is invalid. Please input a valid email address.',style: TextStyle(color: COLOR_TEXT),)
+            ),
+            );
+            return false;
+        }
+      }
 
       // add user details to DB through the adduserdetails
       addUserDetails(
