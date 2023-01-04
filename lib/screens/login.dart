@@ -10,17 +10,26 @@ class LoginWidgetPage extends StatefulWidget {
   State<LoginWidgetPage> createState() => LoginPage();
 }
 
+final _auth = FirebaseAuth.instance;
 class LoginPage extends State<LoginWidgetPage> {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-
   //Login Button function
   Future log_In() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(email: 
-    usernameController.text.trim(), 
-    password: passwordController.text.trim(), 
-    );
+try {
+      if(FirebaseAuth.instance.currentUser != null ){
+        Navigator.pushNamed(context, '/User');
+      }
+      final user = await _auth.signInWithEmailAndPassword(
+          email: usernameController.text.trim(), password: passwordController.text.trim());
+      if (user != null) {
+        print(user);
+        Navigator.pushNamed(context, '/User');
+      }
+    } catch (e) {
+      print(e);
+    }
   }
 
   // Dispose when not in use 
@@ -78,9 +87,7 @@ class LoginPage extends State<LoginWidgetPage> {
             child: ElevatedButton(
               child: const Text('Login'),
               onPressed: () {
-                if(log_In() == true){
-                  Navigator.pushNamed(context, '/User');
-                }
+                log_In();
               },
             )
           )

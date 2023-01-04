@@ -5,8 +5,13 @@ import 'package:winton/screens/login.dart';
 import 'package:winton/themes/custom_theme.dart';
 import 'package:winton/themes/theme_manager.dart';
 import 'package:firebase_core/firebase_core.dart';
- 
-void main() => runApp(const MyApp());
+import 'firebase_options.dart';
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  runApp(const MyApp());
+
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
