@@ -60,69 +60,27 @@ class LandingPage extends State<LandingWidgetPage> {
   }
 }
 
-// class MyStatefulWidgetPage extends StatefulWidget {
-//   const MyStatefulWidgetPage({Key? key}) : super(key: key);
- 
-//   @override
-//   State<MyStatefulWidgetPage> createState() => _MyStatefulWidgetState();
+// For auto login - will need to implement. Im guessing it just checks the Firebase Auth instance and
+// that keeps track of if the user logs out so when we pull the authStateChanges and it comes back
+// with information then it pushes the user straight to the user page
+// and if not then we push to login
+// hopefully the snapshot has the account id and everything set up.
+//class MainPage extends StatelessWidget {
+//  const MainPage({Key? key}) : super({key: key});
+//
+//  @override
+//  Widget build(BuildContext context) {
+//    return Scaffold(
+//      body: StreamBuilder<User?>(
+//        stream: FirebaseAuth.instance.authStateChanges(),
+//        builder: (context, snapshot) {
+//          if (snapshot.hasData) {
+//            return UserWidgetPage();
+//          } else {
+//            return LoginWidgetPage();
+//          }
+//    }
+//   )
+//  )
 // }
- 
-// class _MyStatefulWidgetState extends State<MyStatefulWidgetPage> {
-//   TextEditingController nameController = TextEditingController();
-//   TextEditingController passwordController = TextEditingController();
- 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Padding(
-//         padding: const EdgeInsets.all(10),
-//         child: ListView(
-//           children: <Widget>[
-//             Container(
-//                 alignment: Alignment.center,
-//                 padding: const EdgeInsets.all(10),
-//                 child: const Text(
-//                   'Welcome to Winton',
-//                   style: TextStyle(
-//                       color: Colors.blue,
-//                       fontWeight: FontWeight.w500,
-//                       fontSize: 30),
-//                 )),
-//             Container(
-//                 alignment: Alignment.center,
-//                 padding: const EdgeInsets.all(10),
-//                 child: const Text(
-//                   'Sign Up',
-//                   style: TextStyle(fontSize: 20),
-//                 )),
-            
-//             Container(
-//                 height: 50,
-//                 padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-//                 child: ElevatedButton(
-//                   child: const Text('Login'),
-//                   onPressed: () {
-//                     print(nameController.text);
-//                     print(passwordController.text);
-//                   },
-//                 )
-//             ),
-        //     Row(
-        //       children: <Widget>[
-        //         const Text('Have an account already?'),
-        //         TextButton(
-        //           child: const Text(
-        //             'Sign in',
-        //             style: TextStyle(fontSize: 13),
-        //           ),
-        //           onPressed: () {
-        //             //signup screen
-        //           },
-        //         )
-        //       ],
-        //       mainAxisAlignment: MainAxisAlignment.center,
-        //     ),
-        //   ],
-        // ));
-//   }
-// }
-
+//}
