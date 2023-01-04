@@ -33,29 +33,31 @@ class RegoPage extends State<RegoWidgetPage> {
   //user authentication/creation
   Future signUp() async {
     if (passwordConfirmed()) {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: emailController.text.trim(),
-        password: _passwordController.text.trim(),
-      );
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: emailController.text.trim(),
+          password: _passwordController.text.trim(),
+        );
 
       // add user details to DB through the adduserdetails
       addUserDetails(
-        nameController.text.trim(),
+        nameController.text.trim(), emailController.text.toLowerCase().trim(),
       );
     }
   }
   
   // adding to the user - made for scaling if we want to add full name and ages
-  Future addUserDetails(String username) async { //change users to whatever its called
+  Future addUserDetails(String username, String email) async { //change users to whatever its called
     await FirebaseFirestore.instance.collection('users').add({
-      'username': username,
+      'display_Name': username,
+      'email' : email,
     });
+    // push to landing page after sign up is success full
+    Navigator.pushNamed(context, '/Landing');
   }
 
   //system check for password confirmation
   bool passwordConfirmed() {
-    if (_passwordController.text.trim() ==
-          passwordconfirmController.text.trim()) {
+    if (_passwordController.text.trim() == passwordconfirmController.text.trim()) {
       return true;
     } else {
       return false;
