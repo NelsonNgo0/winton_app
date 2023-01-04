@@ -23,12 +23,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-class LandingPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context){
-    return Scaffold(
-      body: SingleChildScrollView(child: LandingWidgetPage())
-    );
-  }
-}

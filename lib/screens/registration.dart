@@ -2,6 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:winton/themes/custom_theme.dart';
+import 'package:winton/widgets/helper_widgets.dart';
 
 class RegoWidgetPage extends StatefulWidget {
   const RegoWidgetPage({super.key});
@@ -49,6 +52,7 @@ class RegoPage extends State<RegoWidgetPage> {
     });
   }
 
+  //system check for password confirmation
   bool passwordConfirmed() {
     if (_passwordController.text.trim() ==
           passwordconfirmController.text.trim()) {
@@ -61,7 +65,88 @@ class RegoPage extends State<RegoWidgetPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text('Yes'),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              //title
+              Text(
+                'Welcome to',
+                style: GoogleFonts.bebasNeue(
+                  fontSize: 25,
+                  color: COLOR_PRIMARY,
+                ),
+              ),
+              Text(
+                'Winton',
+                style: GoogleFonts.bebasNeue(
+                  fontSize: 100,
+                  color: COLOR_PRIMARY,
+                ),
+              ),
+              
+              Vertical_Spacer(10.0),
+              //name
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: TextField(
+                  controller: nameController,
+                  decoration: const InputDecoration(
+                    labelText: 'What do we call you?',
+                  ),
+                ),
+              ),
+
+              Vertical_Spacer(10.0),
+              //email
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: TextField(
+                  controller: emailController,
+                  decoration: const InputDecoration(
+                    labelText: 'Email Address',
+                  ),
+                ),
+              ),
+
+              Vertical_Spacer(10.0),
+              //password
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: TextField(
+                  controller: _passwordController,
+                  decoration: const InputDecoration(
+                    labelText: 'Password',
+                  ),
+                ),
+              ),
+
+              Vertical_Spacer(10.0),
+              //password conf
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: TextField(
+                  controller: passwordconfirmController,
+                  decoration: const InputDecoration(
+                    labelText: 'Confirm your Password',
+                  ),
+                ),
+              ),
+
+              Vertical_Spacer(10.0),
+              //submit
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: ElevatedButton(
+                  child: const Text('Sign Up'),
+                  onPressed:() {
+                    signUp();
+                  },
+                )
+              )
+            ],
+          )
+        )
       ),
     );
   }
