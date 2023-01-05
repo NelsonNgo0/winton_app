@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:winton/themes/custom_theme.dart';
 import 'package:winton/widgets/helper_widgets.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class LoginWidgetPage extends StatefulWidget {
   const LoginWidgetPage({super.key});
@@ -15,6 +16,16 @@ class LoginPage extends State<LoginWidgetPage> {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
+
+  //Auto login function
+    Future<FirebaseApp> _initializeFirebase() async {
+      FirebaseApp firebaseApp = await Firebase.initializeApp();
+      User? user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        Navigator.pushNamed(context, '/User');
+      }
+      return firebaseApp;
+  }
   //Login Button function
   Future log_In() async {
 try {
