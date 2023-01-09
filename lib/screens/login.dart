@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:winton/themes/custom_theme.dart';
 import 'package:winton/widgets/helper_widgets.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -57,19 +58,26 @@ try {
       color: COLOR_BACKGROUND,
       child: ListView(
         children: <Widget>[
+
+          Vertical_Spacer(100),
+
           Container(
             alignment: Alignment.center,
             padding: const EdgeInsets.all(10),
-            child: const Text(
+            child: Text(
               'Login',
-              style: TextStyle(
-                fontSize: 30,
-                color: COLOR_PRIMARY
-              )
+              style: GoogleFonts.bebasNeue(
+                fontSize: 100,
+                color: COLOR_PRIMARY,
+              ),
             ),
           ),
 
+          Vertical_Spacer(50),
+
           Container(
+            padding: const EdgeInsets.fromLTRB(25, 0, 25, 0),
+
             child: TextField(
               controller: usernameController,
               decoration: InputDecoration(
@@ -78,9 +86,11 @@ try {
             ),
           ),
 
-          Vertical_Spacer(20),
+          Vertical_Spacer(10),
 
           Container(
+            padding: const EdgeInsets.fromLTRB(25, 0, 25, 0),
+
             child: TextField(
               controller: passwordController,
               obscureText: true,
@@ -90,18 +100,53 @@ try {
             ),
           ),
 
-          Vertical_Spacer(20),
+          Vertical_Spacer(70),
 
           Container(
             height: 50,
-            padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+            padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
             child: ElevatedButton(
               child: const Text('Login'),
               onPressed: () {
                 log_In();
               },
             )
-          )
+          ),
+
+          Vertical_Spacer(5),
+
+          Container(
+            child: Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                
+                  Text(
+                    "Don't have an account? ",
+                    style: TextStyle(
+                      fontFamily: 'Satoshi',
+                      fontSize: 13,
+                      color: COLOR_TEXT,
+                    ),
+                  ),
+
+                  InkWell(
+                    child: Text(
+                      'Sign Up',
+                      style: TextStyle(
+                        fontFamily: 'Satoshi',
+                        fontSize: 13,
+                        color: COLOR_PRIMARY,
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, '/Rego');
+                    },
+                  )
+                ]
+              ),
+            ),
+          ),
         ],
       )
     );

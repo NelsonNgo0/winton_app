@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+// ignore_for_file: depend_on_referebced_packages
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -14,8 +16,6 @@ class LandingWidgetPage extends StatefulWidget {
   @override
   State<LandingWidgetPage> createState() => LandingPage();
 }
-
-
 
 class LandingPage extends State<LandingWidgetPage> {
      //Auto login function
@@ -37,75 +37,62 @@ class LandingPage extends State<LandingWidgetPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      
-      children: <Widget>[
-        
-        Padding(
-          
-          padding: const EdgeInsets.fromLTRB(10, 100, 10, 10),
-
-          child: Center(
-            child: Container(
-              
-              width: 300,
-              height: 300,
-              child: Icon(Icons.add_location_rounded, size: 100, color: COLOR_PRIMARY),
-            ),
-          )
-        ),
-
-        Vertical_Spacer(100),
-
-        Padding(
-          padding: const EdgeInsets.all(10),
-
-          child: Row(
-            children: <Widget>[
-              ElevatedButton(
-                child: const Text('Login'),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/Login');
-                },
-              ),
-
-              ElevatedButton(
-                child: const Text('Sign Up'),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/Rego');
-                },
+    return Scaffold(
+      body: Center(
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.fromLTRB(10, 200, 10, 10),
+              child: Center(
+                child: SizedBox(
+                  width: 300,
+                  height: 300,
+                  child: Icon(Icons.add_location_rounded, size: 100, color: COLOR_PRIMARY),
+                ),
               )
-            ],
-            mainAxisAlignment: MainAxisAlignment.center
-          ),
+            ),
+
+            Vertical_Spacer(175),
+
+            Padding(
+              padding: const EdgeInsets.all(10),
+
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+
+                  Horizontal_Spacer(25),
+
+                  Expanded (
+                    child: Center(
+                      child: ElevatedButton(
+                        child: const Text('Login'),
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/Login');
+                        },
+                      )
+                    )
+                  ),
+
+                  Expanded (
+                    child: Center(
+                      child: ElevatedButton(
+                        child: const Text('Sign Up'),
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/Rego');
+                        },
+                      )
+                    )
+                  ),
+
+                  Horizontal_Spacer(25),
+
+                ]
+              ),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }
-
-
-// For auto login - will need to implement. Im guessing it just checks the Firebase Auth instance and
-// that keeps track of if the user logs out so when we pull the authStateChanges and it comes back
-// with information then it pushes the user straight to the user page
-// and if not then we push to login
-// hopefully the snapshot has the account id and everything set up.
-//class MainPage extends StatelessWidget {
-//  const MainPage({Key? key}) : super({key: key});
-//
-//  @override
-//  Widget build(BuildContext context) {
-//    return Scaffold(
-//      body: StreamBuilder<User?>(
-//        stream: FirebaseAuth.instance.authStateChanges(),
-//        builder: (context, snapshot) {
-//          if (snapshot.hasData) {
-//            return UserWidgetPage();
-//          } else {
-//            return LoginWidgetPage();
-//          }
-//    }
-//   )
-//  )
-// }
-//}

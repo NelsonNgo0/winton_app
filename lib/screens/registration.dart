@@ -39,6 +39,8 @@ class RegoPage extends State<RegoWidgetPage> {
           email: emailController.text.trim(),
           password: _passwordController.text.trim(),
         );
+        Navigator.pushNamed(context, '/Login');
+
       } on FirebaseAuthException catch (e){
         if(e.code == 'email-already-in-use'){
           showDialog(context: context, builder: (context) => AlertDialog(
@@ -98,8 +100,6 @@ class RegoPage extends State<RegoWidgetPage> {
       return false;
     }
   }
-
-
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -172,7 +172,7 @@ class RegoPage extends State<RegoWidgetPage> {
                 ),
               ),
 
-              Vertical_Spacer(10.0),
+              Vertical_Spacer(15.0),
               //submit
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -181,8 +181,43 @@ class RegoPage extends State<RegoWidgetPage> {
                   onPressed:() {
                     signUp();
                   },
-                )
-              )
+                ),
+              ),
+
+              Vertical_Spacer(5.0),
+              //back to login
+              Container(
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                    
+                      Text(
+                        "Already have an account? ",
+                        style: TextStyle(
+                          fontFamily: 'Satoshi',
+                          fontSize: 13,
+                          color: COLOR_TEXT,
+                        ),
+                      ),
+
+                      InkWell(
+                        child: Text(
+                          'Login',
+                          style: TextStyle(
+                            fontFamily: 'Satoshi',
+                            fontSize: 13,
+                            color: COLOR_PRIMARY,
+                          ),
+                        ),
+                        onTap: () {
+                          Navigator.pushNamed(context, '/Login');
+                        },
+                      )
+                    ]
+                  ),
+                ),
+              ),
             ],
           )
         )
