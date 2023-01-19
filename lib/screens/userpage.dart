@@ -20,7 +20,8 @@ class UserWidgetPage extends StatefulWidget {
 
 class UserPage extends State<UserWidgetPage> {
 
-  final String apiKey = "j3GimRiApypsJucBs3BIpDDWn4rc4rz8";
+  final String apiKey = "j3GimRiApypsJucBs3BIpDDWn4rc4rz8"; //tomtom api key
+  final String googleAPI = "AIzaSyB2om04zfAtOF1ir3x8s2TbknvmCVMiecE"; //google api
 
   //Logout function
   Future<void> _signOut() async{
