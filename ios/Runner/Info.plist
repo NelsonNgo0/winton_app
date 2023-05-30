@@ -44,6 +44,9 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<!-- IOS LOCATION PERMS -->
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app needs to access your location</string>
 	<true/>
 </dict>
 </plist>

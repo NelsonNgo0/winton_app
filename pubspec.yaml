@@ -33,10 +33,10 @@ dependencies:
   google_fonts: 
   flutter_map:
   http:
-  latong2: ^0.8.1
+  latlong2: ^0.8.1
   #for jank geolocator and geocoding
   geolocator: ^8.2.0
-  geocding: ^2.0.4
+  geocoding: ^2.0.4
 
 dev_dependencies:
   flutter_test:
